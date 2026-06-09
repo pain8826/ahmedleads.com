@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahmed Ibraheem — ahmedleads.com</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#08080c;--gold:#d4a843;--text:#e8e5dd;--dim:#7a776e;--serif:'DM Serif Display',Georgia,serif;--sans:'Outfit',sans-serif}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);overflow-x:hidden}
+
+.hero{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;user-select:none}
+
+.photo-container{position:relative;width:420px;height:560px;z-index:5}
+.photo-layer{position:absolute;inset:0;overflow:hidden}
+.photo-layer img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-vest{clip-path:inset(0 50% 0 0)}
+.photo-suit{clip-path:inset(0 0 0 50%)}
+
+.slider-line{position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--gold);z-index:20;cursor:ew-resize;transform:translateX(-50%)}
+.slider-line::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border:2px solid var(--gold);border-radius:50%;background:rgba(8,8,12,0.8);backdrop-filter:blur(4px)}
+.slider-line::after{content:'⟨  ⟩';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:14px;color:var(--gold);letter-spacing:4px;font-family:var(--sans);font-weight:300}
+
+/* Labels positioned OUTSIDE the photo container */
+.side-label{position:absolute;top:50%;z-index:10;transition:opacity 0.4s}
+.label-left{right:calc(50% + 240px);transform:translateY(-50%);text-align:right}
+.label-right{left:calc(50% + 240px);transform:translateY(-50%);text-align:left}
+.label-title{font-family:var(--serif);font-size:24px;color:var(--text);margin-bottom:4px}
+.label-role{font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-weight:300}
+.label-sub{font-size:10px;color:var(--dim);letter-spacing:1px;margin-top:12px;line-height:1.8;font-weight:300}
+
+.hero-bottom{position:absolute;bottom:48px;left:0;right:0;text-align:center;z-index:10}
+.hero-name{font-family:var(--serif);font-size:clamp(48px,8vw,96px);letter-spacing:-1px}
+.hero-name span{color:var(--gold)}
+.hero-sub{font-size:13px;color:var(--dim);font-weight:300;margin-top:10px;letter-spacing:1px}
+.hero-ctas{margin-top:20px;display:flex;justify-content:center;gap:12px}
+.btn{padding:14px 32px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;font-weight:400;transition:all 0.3s;font-family:var(--sans)}
+.btn-gold{background:var(--gold);color:var(--bg)}.btn-gold:hover{background:#deb454}
+.btn-outline{border:1px solid rgba(212,168,67,0.25);color:var(--gold)}.btn-outline:hover{border-color:var(--gold)}
+
+.drag-hint{position:absolute;top:40px;left:50%;transform:translateX(-50%);z-index:10;font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-weight:300;opacity:0.6;animation:hintPulse 2.5s ease infinite}
+@keyframes hintPulse{0%,100%{opacity:0.6}50%{opacity:0.2}}
+
+.photo-glow{position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(212,168,67,0.04) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);z-index:1;pointer-events:none}
+
+nav{position:fixed;top:0;width:100%;z-index:100;padding:0 48px}
+nav .inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;height:64px}
+nav .logo{font-family:var(--serif);font-size:22px;color:var(--gold)}
+nav ul{list-style:none;display:flex;gap:28px}
+nav a{color:var(--dim);text-decoration:none;font-size:13px;font-weight:300;letter-spacing:0.5px}
+</style>
+</head>
+<body>
+
+<nav><div class="inner"><div class="logo">AI</div><ul>
+<li><a href="#">About</a></li><li><a href="#">Scope</a></li><li><a href="#">Vehicles</a></li><li><a href="#">Skills</a></li><li><a href="#">Contact</a></li>
+</ul></div></nav>
+
+<section class="hero" id="hero">
+<div class="photo-glow"></div>
+<div class="drag-hint" id="dragHint">← Drag to explore →</div>
+
+<div class="side-label label-left" id="labelLeft">
+<div class="label-title">Plant Floor</div>
+<div class="label-role">Operations</div>
+<div class="label-sub">11 Plants · 200+ Suppliers<br>Hands-on. Data-driven.</div>
+</div>
+
+<div class="side-label label-right" id="labelRight">
+<div class="label-title">Boardroom</div>
+<div class="label-role">Leadership</div>
+<div class="label-sub">$2.8M Saved · iMBA<br>Strategy meets execution.</div>
+</div>
+
+<div class="photo-container" id="photoContainer">
+<div class="photo-layer photo-vest" id="vestLayer">
+<img src="vest.png" alt="Ahmed - Plant Floor">
+</div>
+<div class="photo-layer photo-suit" id="suitLayer">
+<img src="suit.png" alt="Ahmed - Executive">
+</div>
+<div class="slider-line" id="sliderLine"></div>
+</div>
+
+<div class="hero-bottom">
+<div class="hero-name">Ahmed Ibraheem<span>.</span></div>
+<div class="hero-sub">Releasing & Forecasting Lead · One person. Both worlds.</div>
+<div class="hero-ctas"><a href="#" class="btn btn-gold">Get in Touch</a><a href="#" class="btn btn-outline">Resume</a></div>
+</div>
+</section>
+
+<script>
+const container=document.getElementById('photoContainer');
+const sliderLine=document.getElementById('sliderLine');
+const vestLayer=document.getElementById('vestLayer');
+const suitLayer=document.getElementById('suitLayer');
+const labelLeft=document.getElementById('labelLeft');
+const labelRight=document.getElementById('labelRight');
+const dragHint=document.getElementById('dragHint');
+let isDragging=false;
+let pct=50;
+
+function updateSlider(percent){
+pct=Math.max(5,Math.min(95,percent));
+vestLayer.style.clipPath='inset(0 '+(100-pct)+'% 0 0)';
+suitLayer.style.clipPath='inset(0 0 0 '+pct+'%)';
+sliderLine.style.left=pct+'%';
+labelLeft.style.opacity=Math.min(1,(pct-15)/25);
+labelRight.style.opacity=Math.min(1,(85-pct)/25);
+}
+
+sliderLine.addEventListener('mousedown',e=>{isDragging=true;dragHint.style.opacity='0';e.preventDefault()});
+document.addEventListener('mousemove',e=>{if(!isDragging)return;const rect=container.getBoundingClientRect();updateSlider(((e.clientX-rect.left)/rect.width)*100)});
+document.addEventListener('mouseup',()=>{isDragging=false});
+
+sliderLine.addEventListener('touchstart',e=>{isDragging=true;dragHint.style.opacity='0';e.preventDefault()});
+document.addEventListener('touchmove',e=>{if(!isDragging)return;const rect=container.getBoundingClientRect();updateSlider(((e.touches[0].clientX-rect.left)/rect.width)*100)});
+document.addEventListener('touchend',()=>{isDragging=false});
+
+container.addEventListener('mousedown',e=>{isDragging=true;dragHint.style.opacity='0';const rect=container.getBoundingClientRect();updateSlider(((e.clientX-rect.left)/rect.width)*100)});
+
+updateSlider(50);
+</script>
+</body>
+</html>
