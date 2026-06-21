@@ -299,8 +299,30 @@ footer{border-top:1px solid var(--line);padding:1.7rem 0}
 .ftop:hover{border-color:var(--gold);background:var(--gold);color:#171106}
 
 .card::before,.cred::before{content:attr(data-n);position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);font:italic 400 6.8rem var(--serif);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(212,168,67,.13);pointer-events:none;transition:-webkit-text-stroke-color .4s}
-.cimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.18;transition:opacity .6s var(--ease),transform 1.2s var(--ease);pointer-events:none;z-index:0}
-.card:hover .cimg{opacity:.35;transform:scale(1.06)}
+/* card image crossfade */
+@keyframes cfade{0%,30%{opacity:.22}36%,94%{opacity:0}100%{opacity:.22}}
+.cimg-a{animation:cfade 10.5s ease infinite}
+.cimg-b{animation:cfade 10.5s ease infinite;animation-delay:-7s}
+.cimg-c{animation:cfade 10.5s ease infinite;animation-delay:-3.5s}
+.cimg[alt=""]{font-size:0}
+.cimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.22;filter:brightness(.4) saturate(.8);transition:opacity .6s var(--ease),transform 1.2s var(--ease),filter .6s var(--ease);pointer-events:none;z-index:0}
+.card:hover .cimg{transform:scale(1.06);filter:brightness(.5) saturate(1)}
+.card:hover .cimg-a{animation:none;opacity:.35}
+.card:hover .cimg-b,.card:hover .cimg-c{animation:none;opacity:0}
+.pgrid .card:nth-child(1) .cimg-a{animation-delay:0.0s}.pgrid .card:nth-child(1) .cimg-b{animation-delay:-7.0s}.pgrid .card:nth-child(1) .cimg-c{animation-delay:-3.5s}
+.pgrid .card:nth-child(2) .cimg-a{animation-delay:0.8s}.pgrid .card:nth-child(2) .cimg-b{animation-delay:-6.2s}.pgrid .card:nth-child(2) .cimg-c{animation-delay:-2.7s}
+.pgrid .card:nth-child(3) .cimg-a{animation-delay:1.6s}.pgrid .card:nth-child(3) .cimg-b{animation-delay:-5.4s}.pgrid .card:nth-child(3) .cimg-c{animation-delay:-1.9s}
+.pgrid .card:nth-child(4) .cimg-a{animation-delay:2.4s}.pgrid .card:nth-child(4) .cimg-b{animation-delay:-4.6s}.pgrid .card:nth-child(4) .cimg-c{animation-delay:-1.1s}
+.pgrid .card:nth-child(5) .cimg-a{animation-delay:3.2s}.pgrid .card:nth-child(5) .cimg-b{animation-delay:-3.8s}.pgrid .card:nth-child(5) .cimg-c{animation-delay:-0.3s}
+.pgrid .card:nth-child(6) .cimg-a{animation-delay:4.0s}.pgrid .card:nth-child(6) .cimg-b{animation-delay:-3.0s}.pgrid .card:nth-child(6) .cimg-c{animation-delay:0.5s}
+.pgrid .card:nth-child(7) .cimg-a{animation-delay:4.8s}.pgrid .card:nth-child(7) .cimg-b{animation-delay:-2.2s}.pgrid .card:nth-child(7) .cimg-c{animation-delay:1.3s}
+.pgrid .card:nth-child(8) .cimg-a{animation-delay:5.6s}.pgrid .card:nth-child(8) .cimg-b{animation-delay:-1.4s}.pgrid .card:nth-child(8) .cimg-c{animation-delay:2.1s}
+.pgrid .card:nth-child(9) .cimg-a{animation-delay:6.4s}.pgrid .card:nth-child(9) .cimg-b{animation-delay:-0.6s}.pgrid .card:nth-child(9) .cimg-c{animation-delay:2.9s}
+.pgrid .card:nth-child(10) .cimg-a{animation-delay:7.2s}.pgrid .card:nth-child(10) .cimg-b{animation-delay:0.2s}.pgrid .card:nth-child(10) .cimg-c{animation-delay:3.7s}
+.pgrid .card:nth-child(11) .cimg-a{animation-delay:8.0s}.pgrid .card:nth-child(11) .cimg-b{animation-delay:1.0s}.pgrid .card:nth-child(11) .cimg-c{animation-delay:4.5s}
+.pgrid .card:nth-child(12) .cimg-a{animation-delay:8.8s}.pgrid .card:nth-child(12) .cimg-b{animation-delay:1.8s}.pgrid .card:nth-child(12) .cimg-c{animation-delay:5.3s}
+.pgrid .card:nth-child(13) .cimg-a{animation-delay:9.6s}.pgrid .card:nth-child(13) .cimg-b{animation-delay:2.6s}.pgrid .card:nth-child(13) .cimg-c{animation-delay:6.1s}
+
 .card .crow,.card .cbot{position:relative;z-index:1}
 .card:hover::before,.cred:hover::before{-webkit-text-stroke-color:rgba(212,168,67,.24)}
 @supports not (-webkit-text-stroke:1px #000){.m2{color:rgba(212,168,67,.3)}.bgword{color:rgba(242,237,227,.05)}.card::before{color:rgba(212,168,67,.1)}}
@@ -489,19 +511,19 @@ footer{border-top:1px solid var(--line);padding:1.7rem 0}
   </div>
   <div class="wrap" data-reveal>
         <div class="pgrid" id="pgrid">
-      <article class="card" data-n="01"><div class="crow"><span class="cidx">01</span><span class="chips"><span class="chip">ICE</span></span></div><div class="cbot"><img class="cimg" src="img/image1.jpg" alt="Ram 1500" loading="lazy"><h4 class="cname">Ram 1500</h4><p class="cplant">Sterling Heights · MI</p></div></article>
-      <article class="card" data-n="02"><div class="crow"><span class="cidx">02</span><span class="chips"><span class="chip">ICE</span><span class="chip">4xe</span></span></div><div class="cbot"><img class="cimg" src="img/image2.jpg" alt="Jeep Grand Cherokee" loading="lazy"><h4 class="cname">Jeep Grand Cherokee</h4><p class="cplant">Detroit — Mack · MI</p></div></article>
-      <article class="card" data-n="03"><div class="crow"><span class="cidx">03</span><span class="chips"><span class="chip">ICE</span></span></div><div class="cbot"><img class="cimg" src="img/image3.jpg" alt="Jeep Wagoneer" loading="lazy"><h4 class="cname">Jeep Wagoneer</h4><p class="cplant">Warren Truck · MI</p></div></article>
-      <article class="card" data-n="04"><div class="crow"><span class="cidx">04</span><span class="chips"><span class="chip">ICE</span></span></div><div class="cbot"><img class="cimg" src="img/image4.jpg" alt="Grand Wagoneer" loading="lazy"><h4 class="cname">Grand Wagoneer</h4><p class="cplant">Warren Truck · MI</p></div></article>
-      <article class="card" data-n="05"><div class="crow"><span class="cidx">05</span><span class="chips"><span class="chip ev">EV</span></span></div><div class="cbot"><img class="cimg" src="img/image5.jpg" alt="Wagoneer S" loading="lazy"><h4 class="cname">Wagoneer S</h4><p class="cplant">Toluca · MX</p></div></article>
-      <article class="card" data-n="06"><div class="crow"><span class="cidx">06</span><span class="chips"><span class="chip ev">EV</span><span class="chip">ICE</span></span></div><div class="cbot"><img class="cimg" src="img/image6.jpg" alt="Dodge Charger" loading="lazy"><h4 class="cname">Dodge Charger</h4><p class="cplant">Windsor · ON</p></div></article>
-      <article class="card" data-n="07"><div class="crow"><span class="cidx">07</span><span class="chips"><span class="chip">ICE</span><span class="chip">PHEV</span></span></div><div class="cbot"><img class="cimg" src="img/image7.jpg" alt="Chrysler Pacifica" loading="lazy"><h4 class="cname">Chrysler Pacifica</h4><p class="cplant">Windsor · ON</p></div></article>
-      <article class="card" data-n="08"><div class="crow"><span class="cidx">08</span><span class="chips"><span class="chip">ICE</span></span></div><div class="cbot"><img class="cimg" src="img/image8.jpg" alt="Jeep Cherokee" loading="lazy"><h4 class="cname">Jeep Cherokee</h4><p class="cplant">Belvidere · IL</p></div></article>
-      <article class="card" data-n="09"><div class="crow"><span class="cidx">09</span><span class="chips"><span class="chip">ICE</span></span></div><div class="cbot"><img class="cimg" src="img/image9.jpg" alt="Jeep Compass" loading="lazy"><h4 class="cname">Jeep Compass</h4><p class="cplant">Toluca · MX</p></div></article>
-      <article class="card" data-n="10"><div class="crow"><span class="cidx">10</span><span class="chips"><span class="chip">ICE</span><span class="chip ev">EV</span></span></div><div class="cbot"><img class="cimg" src="img/image10.jpg" alt="Ram ProMaster" loading="lazy"><h4 class="cname">Ram ProMaster</h4><p class="cplant">Saltillo Van · MX</p></div></article>
-      <article class="card" data-n="11"><div class="crow"><span class="cidx">11</span><span class="chips"><span class="chip">ICE</span></span></div><div class="cbot"><img class="cimg" src="img/image11.jpg" alt="Ram Heavy Duty" loading="lazy"><h4 class="cname">Ram Heavy Duty</h4><p class="cplant">Saltillo Truck · MX</p></div></article>
-      <article class="card" data-n="12"><div class="crow"><span class="cidx">12</span><span class="chips"><span class="chip">ICE</span></span></div><div class="cbot"><img class="cimg" src="img/image12.jpg" alt="Jeep Gladiator" loading="lazy"><h4 class="cname">Jeep Gladiator</h4><p class="cplant">Toledo · OH</p></div></article>
-      <article class="card" data-n="13"><div class="crow"><span class="cidx">13</span><span class="chips"><span class="chip ev">EV</span></span></div><div class="cbot"><img class="cimg" src="img/image13.jpg" alt="Jeep Recon" loading="lazy"><h4 class="cname">Jeep Recon</h4><p class="cplant">Toledo · OH</p></div></article>
+      <article class="card" data-n="01"><img class="cimg cimg-a" src="img/image1a.jpg" alt="" loading="lazy"><img class="cimg cimg-b" src="img/image1b.jpg" alt="" loading="lazy"><img class="cimg cimg-c" src="img/image1c.jpg" alt="" loading="lazy"><div class="crow"><span class="cidx">01</span><span class="chips"><span class="chip">ICE</span></span></div><div class="cbot"><h4 class="cname">Ram 1500</h4><p class="cplant">Sterling Heights · MI</p></div></article>
+      <article class="card" data-n="02"><img class="cimg cimg-a" src="img/image2a.jpg" alt="" loading="lazy"><img class="cimg cimg-b" src="img/image2b.jpg" alt="" loading="lazy"><img class="cimg cimg-c" src="img/image2c.jpg" alt="" loading="lazy"><div class="crow"><span class="cidx">02</span><span class="chips"><span class="chip">ICE</span><span class="chip">4xe</span></span></div><div class="cbot"><h4 class="cname">Jeep Grand Cherokee</h4><p class="cplant">Detroit — Mack · MI</p></div></article>
+      <article class="card" data-n="03"><img class="cimg cimg-a" src="img/image3a.jpg" alt="" loading="lazy"><img class="cimg cimg-b" src="img/image3b.jpg" alt="" loading="lazy"><img class="cimg cimg-c" src="img/image3c.jpg" alt="" loading="lazy"><div class="crow"><span class="cidx">03</span><span class="chips"><span class="chip">ICE</span></span></div><div class="cbot"><h4 class="cname">Jeep Wagoneer</h4><p class="cplant">Warren Truck · MI</p></div></article>
+      <article class="card" data-n="04"><img class="cimg cimg-a" src="img/image4a.jpg" alt="" loading="lazy"><img class="cimg cimg-b" src="img/image4b.jpg" alt="" loading="lazy"><img class="cimg cimg-c" src="img/image4c.jpg" alt="" loading="lazy"><div class="crow"><span class="cidx">04</span><span class="chips"><span class="chip">ICE</span></span></div><div class="cbot"><h4 class="cname">Grand Wagoneer</h4><p class="cplant">Warren Truck · MI</p></div></article>
+      <article class="card" data-n="05"><img class="cimg cimg-a" src="img/image5a.jpg" alt="" loading="lazy"><img class="cimg cimg-b" src="img/image5b.jpg" alt="" loading="lazy"><img class="cimg cimg-c" src="img/image5c.jpg" alt="" loading="lazy"><div class="crow"><span class="cidx">05</span><span class="chips"><span class="chip ev">EV</span></span></div><div class="cbot"><h4 class="cname">Wagoneer S</h4><p class="cplant">Toluca · MX</p></div></article>
+      <article class="card" data-n="06"><img class="cimg cimg-a" src="img/image6a.jpg" alt="" loading="lazy"><img class="cimg cimg-b" src="img/image6b.jpg" alt="" loading="lazy"><img class="cimg cimg-c" src="img/image6c.jpg" alt="" loading="lazy"><div class="crow"><span class="cidx">06</span><span class="chips"><span class="chip ev">EV</span><span class="chip">ICE</span></span></div><div class="cbot"><h4 class="cname">Dodge Charger</h4><p class="cplant">Windsor · ON</p></div></article>
+      <article class="card" data-n="07"><img class="cimg cimg-a" src="img/image7a.jpg" alt="" loading="lazy"><img class="cimg cimg-b" src="img/image7b.jpg" alt="" loading="lazy"><img class="cimg cimg-c" src="img/image7c.jpg" alt="" loading="lazy"><div class="crow"><span class="cidx">07</span><span class="chips"><span class="chip">ICE</span><span class="chip">PHEV</span></span></div><div class="cbot"><h4 class="cname">Chrysler Pacifica</h4><p class="cplant">Windsor · ON</p></div></article>
+      <article class="card" data-n="08"><img class="cimg cimg-a" src="img/image8a.jpg" alt="" loading="lazy"><img class="cimg cimg-b" src="img/image8b.jpg" alt="" loading="lazy"><img class="cimg cimg-c" src="img/image8c.jpg" alt="" loading="lazy"><div class="crow"><span class="cidx">08</span><span class="chips"><span class="chip">ICE</span></span></div><div class="cbot"><h4 class="cname">Jeep Cherokee</h4><p class="cplant">Belvidere · IL</p></div></article>
+      <article class="card" data-n="09"><img class="cimg cimg-a" src="img/image9a.jpg" alt="" loading="lazy"><img class="cimg cimg-b" src="img/image9b.jpg" alt="" loading="lazy"><img class="cimg cimg-c" src="img/image9c.jpg" alt="" loading="lazy"><div class="crow"><span class="cidx">09</span><span class="chips"><span class="chip">ICE</span></span></div><div class="cbot"><h4 class="cname">Jeep Compass</h4><p class="cplant">Toluca · MX</p></div></article>
+      <article class="card" data-n="10"><img class="cimg cimg-a" src="img/image10a.jpg" alt="" loading="lazy"><img class="cimg cimg-b" src="img/image10b.jpg" alt="" loading="lazy"><img class="cimg cimg-c" src="img/image10c.jpg" alt="" loading="lazy"><div class="crow"><span class="cidx">10</span><span class="chips"><span class="chip">ICE</span><span class="chip ev">EV</span></span></div><div class="cbot"><h4 class="cname">Ram ProMaster</h4><p class="cplant">Saltillo Van · MX</p></div></article>
+      <article class="card" data-n="11"><img class="cimg cimg-a" src="img/image11a.jpg" alt="" loading="lazy"><img class="cimg cimg-b" src="img/image11b.jpg" alt="" loading="lazy"><img class="cimg cimg-c" src="img/image11c.jpg" alt="" loading="lazy"><div class="crow"><span class="cidx">11</span><span class="chips"><span class="chip">ICE</span></span></div><div class="cbot"><h4 class="cname">Ram Heavy Duty</h4><p class="cplant">Saltillo Truck · MX</p></div></article>
+      <article class="card" data-n="12"><img class="cimg cimg-a" src="img/image12a.jpg" alt="" loading="lazy"><img class="cimg cimg-b" src="img/image12b.jpg" alt="" loading="lazy"><img class="cimg cimg-c" src="img/image12c.jpg" alt="" loading="lazy"><div class="crow"><span class="cidx">12</span><span class="chips"><span class="chip">ICE</span></span></div><div class="cbot"><h4 class="cname">Jeep Gladiator</h4><p class="cplant">Toledo · OH</p></div></article>
+      <article class="card" data-n="13"><img class="cimg cimg-a" src="img/image13a.jpg" alt="" loading="lazy"><img class="cimg cimg-b" src="img/image13b.jpg" alt="" loading="lazy"><img class="cimg cimg-c" src="img/image13c.jpg" alt="" loading="lazy"><div class="crow"><span class="cidx">13</span><span class="chips"><span class="chip ev">EV</span></span></div><div class="cbot"><h4 class="cname">Jeep Recon</h4><p class="cplant">Toledo · OH</p></div></article>
     </div>
     
   </div>
@@ -783,6 +805,11 @@ if(svg){
   }
 }
 
+
+/* ---------- hide broken card images ---------- */
+$$('.cimg').forEach(function(img){
+  img.addEventListener('error',function(){this.style.display='none'});
+});
 /* ---------- expertise rows ---------- */
 $$('.xrow').forEach(function(r){
   function tog(){var o=r.classList.toggle('open');r.setAttribute('aria-expanded',o?'true':'false');}
