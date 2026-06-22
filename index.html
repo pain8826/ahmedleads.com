@@ -40,7 +40,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 ::-webkit-scrollbar-thumb{background:#2a261c;border-radius:99px;border:2px solid var(--bg)}
 ::-webkit-scrollbar-thumb:hover{background:var(--gold)}
 :focus-visible{outline:2px solid var(--gold2);outline-offset:3px;border-radius:4px}
-html.fine *{cursor:none!important}
 body.menu-open{overflow:hidden}
 /* grain */
 body::after{content:'';position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
@@ -66,15 +65,6 @@ body::after{content:'';position:fixed;inset:-50%;z-index:90;pointer-events:none;
 .snote{font:500 .78rem var(--mono);letter-spacing:.12em;color:var(--mut);text-transform:uppercase;max-width:30ch;line-height:1.9;text-align:right}
 /* ============ PROGRESS / CURSOR ============ */
 #progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold2));z-index:260}
-#cursor{position:fixed;inset:0;pointer-events:none;z-index:300;opacity:0;transition:opacity .3s}
-#cursor.on{opacity:1}
-.c-dot{position:fixed;top:-3px;left:-3px;width:6px;height:6px;border-radius:50%;background:var(--gold2)}
-.c-ring{position:fixed;top:-19px;left:-19px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(212,168,67,.7);display:flex;align-items:center;justify-content:center;transition:width .35s var(--ease),height .35s var(--ease),top .35s var(--ease),left .35s var(--ease),background .35s,border-color .35s}
-#cursor.link .c-ring{width:56px;height:56px;top:-28px;left:-28px;border-color:rgba(240,207,126,.95)}
-#cursor.big .c-ring{width:86px;height:86px;top:-43px;left:-43px;background:var(--gold);border-color:var(--gold)}
-#cursor.big .c-dot{opacity:0}
-.c-label{font:700 .58rem var(--mono);letter-spacing:.18em;color:#171106}
-@media (pointer:coarse){#cursor{display:none}}
 /* ============ LOADER ============ */
 #loader{position:fixed;inset:0;z-index:400;background:var(--bg);display:flex;align-items:center;justify-content:center;transform:translateY(0);transition:transform .95s cubic-bezier(.76,0,.24,1)}
 #loader::after{content:'';position:absolute;top:100%;left:0;right:0;height:12vh;background:var(--bg);border-radius:0 0 50% 50% / 0 0 100% 100%;transform:scaleY(1);transform-origin:top;transition:transform .95s cubic-bezier(.76,0,.24,1)}
@@ -312,20 +302,6 @@ footer{border-top:1px solid var(--line);padding:1.7rem 0}
 .cimg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center 55%;opacity:.55;transform:scale(1.3);transition:opacity .6s var(--ease),transform 1.2s var(--ease);pointer-events:none;z-index:0}
 .card:hover .cimg{transform:scale(1.38);opacity:.7}
 .card:hover .cimg-a,.card:hover .cimg-b,.card:hover .cimg-c{animation-play-state:paused}
-.pgrid .card:nth-child(1) .cimg-a{animation-delay:0.0s}.pgrid .card:nth-child(1) .cimg-b{animation-delay:-7.0s}.pgrid .card:nth-child(1) .cimg-c{animation-delay:-3.5s}
-.pgrid .card:nth-child(2) .cimg-a{animation-delay:0.7s}.pgrid .card:nth-child(2) .cimg-b{animation-delay:-6.3s}.pgrid .card:nth-child(2) .cimg-c{animation-delay:-2.8s}
-.pgrid .card:nth-child(3) .cimg-a{animation-delay:1.4s}.pgrid .card:nth-child(3) .cimg-b{animation-delay:-5.6s}.pgrid .card:nth-child(3) .cimg-c{animation-delay:-2.1s}
-.pgrid .card:nth-child(4) .cimg-a{animation-delay:2.1s}.pgrid .card:nth-child(4) .cimg-b{animation-delay:-4.9s}.pgrid .card:nth-child(4) .cimg-c{animation-delay:-1.4s}
-.pgrid .card:nth-child(5) .cimg-a{animation-delay:2.8s}.pgrid .card:nth-child(5) .cimg-b{animation-delay:-4.2s}.pgrid .card:nth-child(5) .cimg-c{animation-delay:-0.7s}
-.pgrid .card:nth-child(6) .cimg-a{animation-delay:3.5s}.pgrid .card:nth-child(6) .cimg-b{animation-delay:-3.5s}.pgrid .card:nth-child(6) .cimg-c{animation-delay:0.0s}
-.pgrid .card:nth-child(7) .cimg-a{animation-delay:4.2s}.pgrid .card:nth-child(7) .cimg-b{animation-delay:-2.8s}.pgrid .card:nth-child(7) .cimg-c{animation-delay:0.7s}
-.pgrid .card:nth-child(8) .cimg-a{animation-delay:4.9s}.pgrid .card:nth-child(8) .cimg-b{animation-delay:-2.1s}.pgrid .card:nth-child(8) .cimg-c{animation-delay:1.4s}
-.pgrid .card:nth-child(9) .cimg-a{animation-delay:5.6s}.pgrid .card:nth-child(9) .cimg-b{animation-delay:-1.4s}.pgrid .card:nth-child(9) .cimg-c{animation-delay:2.1s}
-.pgrid .card:nth-child(10) .cimg-a{animation-delay:6.3s}.pgrid .card:nth-child(10) .cimg-b{animation-delay:-0.7s}.pgrid .card:nth-child(10) .cimg-c{animation-delay:2.8s}
-.pgrid .card:nth-child(11) .cimg-a{animation-delay:7.0s}.pgrid .card:nth-child(11) .cimg-b{animation-delay:0.0s}.pgrid .card:nth-child(11) .cimg-c{animation-delay:3.5s}
-.pgrid .card:nth-child(12) .cimg-a{animation-delay:7.7s}.pgrid .card:nth-child(12) .cimg-b{animation-delay:0.7s}.pgrid .card:nth-child(12) .cimg-c{animation-delay:4.2s}
-.pgrid .card:nth-child(13) .cimg-a{animation-delay:8.4s}.pgrid .card:nth-child(13) .cimg-b{animation-delay:1.4s}.pgrid .card:nth-child(13) .cimg-c{animation-delay:4.9s}
-
 
 .card .crow,.card .cbot{position:relative;z-index:1}
 .cred:hover::before{-webkit-text-stroke-color:rgba(212,168,67,.24)}
@@ -358,8 +334,6 @@ footer{border-top:1px solid var(--line);padding:1.7rem 0}
   html{scroll-behavior:auto}
   .js [data-reveal],.js .w .wi,.mask>span,.eyebrow,.hsub,.hcta,.hmeta,.stage,.badge,.cue{opacity:1!important;transform:none!important;filter:none!important}
   #loader{display:none}
-  #cursor{display:none}
-  html.fine *{cursor:auto!important}
 }
 </style>
 </head>
@@ -367,63 +341,6 @@ footer{border-top:1px solid var(--line);padding:1.7rem 0}
 
 <div id="loader" aria-hidden="true"><div id="lword">Hello</div></div>
 <div id="progress" aria-hidden="true"></div>
-<div id="cursor" aria-hidden="true"><div class="c-ring"><span class="c-label"></span></div><div class="c-dot"></div></div>
-
-<header class="nav" id="nav">
-  <a class="logo" href="#hero" aria-label="Back to top">Ahmed Ibraheem<b>.</b></a>
-  <div class="nright">
-    <span class="ntime"><i></i>Auburn Hills <span class="jstime">--:--</span> ET</span>
-    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
-  </div>
-</header>
-
-<nav id="menu" aria-label="Site menu">
-  <p class="mtag">Ahmed Ibraheem — Releasing &amp; Forecasting</p>
-  <div class="mlinks">
-    <a class="mlink" href="#story"><i>01</i>The Road Here</a>
-    <a class="mlink" href="#scale"><i>02</i>The Scale</a>
-    <a class="mlink" href="#programs"><i>03</i>Programs</a>
-    <a class="mlink" href="#expertise"><i>04</i>Expertise</a>
-    <a class="mlink" href="#contact"><i>05</i>Contact</a>
-  </div>
-  <div class="mfoot">
-    <a href="mailto:ahmed@ahmedleads.com">ahmed@ahmedleads.com</a>
-    <span>Auburn Hills, MI — <span class="jstime">--:--</span> ET</span>
-    <span>WK <span class="jsweek">--</span> / 2026</span>
-  </div>
-</nav>
-
-<main>
-<!-- ============ HERO ============ -->
-<section id="hero">
-  <div class="orb o1"></div><div class="orb o2"></div>
-  <div class="bgword" aria-hidden="true">Operations</div>
-  <div class="wrap hgrid">
-    <div class="hcopy">
-      <p class="eyebrow">Releasing &amp; Forecasting Lead — Stellantis</p>
-      <h1>
-        <span class="mask"><span>Ahmed</span></span>
-        <span class="mask"><span>Ibraheem<span class="dot">.</span></span></span>
-      </h1>
-      <p class="hsub">Eight years from the assembly line to the desk where the schedule is written. I run releasing &amp; forecasting across <b>11 North American plants</b> — one weekly heartbeat that aligns corporate demand, plant capacity, and <b>200+ suppliers</b>.</p>
-      <div class="hcta">
-        <a class="btn magnetic" href="#scale"><span class="m-inner" style="display:inline-flex;align-items:center;gap:.8rem">See the scale <span class="ar">↓</span></span></a>
-        <a class="btn-line" href="#contact">Get in touch</a>
-      </div>
-      <div class="hmeta">
-        <span>42.61°N — 83.28°W</span>
-        <span>Auburn Hills, MI</span>
-        <span>ICE + EV</span>
-      </div>
-    </div>
-    <div class="stage">
-      <div class="glow" aria-hidden="true"></div>
-      <div class="pwrap" id="pwrap">
-        <div class="ptilt" id="ptilt">
-          <img class="base" src="suit.png" alt="Ahmed Ibraheem, arms crossed, in a navy suit" width="447" height="558">
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -702,30 +619,6 @@ if('IntersectionObserver' in window){
   $$('[data-count]').forEach(function(el){cio.observe(el)});
 }
 
-/* ---------- custom cursor ---------- */
-var cur=$('#cursor');
-if(cur&&fine&&!reduced){
-  var dot=$('.c-dot',cur), ring=$('.c-ring',cur), lab=$('.c-label',cur);
-  var mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my,shown=false;
-  addEventListener('mousemove',function(e){
-    mx=e.clientX;my=e.clientY;
-    if(!shown){shown=true;cur.classList.add('on');}
-  },{passive:true});
-  (function loop(){
-    rx+=(mx-rx)*.16; ry+=(my-ry)*.16;
-    dot.style.transform='translate('+mx+'px,'+my+'px)';
-    ring.style.transform='translate('+rx+'px,'+ry+'px)';
-    requestAnimationFrame(loop);
-  })();
-  document.addEventListener('mouseover',function(e){if(!shown)return;
-    var t=e.target.closest?e.target.closest('[data-cursor],a,button,.xrow'):null;
-    if(!t){cur.className='on';lab.textContent='';return;}
-    var m=t.getAttribute('data-cursor');
-    if(m){cur.className='on big';lab.textContent=m.toUpperCase();}
-    else{cur.className='on link';lab.textContent='';}
-  });
-}else if(cur){cur.style.display='none';}
-
 /* ---------- magnetic ---------- */
 if(fine&&!reduced){
   $$('.magnetic').forEach(function(el){
@@ -738,7 +631,6 @@ if(fine&&!reduced){
     el.addEventListener('mouseleave',function(){inner.style.transform='';});
   });
 }
-
 
 /* ---------- story rail ---------- */
 var story=$('#timeline'), rail=$('#railfill');
@@ -808,7 +700,6 @@ if(svg){
     });
   }
 }
-
 
 /* ---------- hide broken card images ---------- */
 $$('.cimg').forEach(function(img){
